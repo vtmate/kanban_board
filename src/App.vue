@@ -1,20 +1,27 @@
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
-// import TheWelcome from './components/TheWelcome.vue'
+import { ref } from "vue";
+import CardColumn from "./components/CardColumn.vue";
+import Card from "./components/Card.vue";
+
+const columns = ref(["Todo", "In Progress", "Done"]);
 </script>
 
 <template>
-  <v-container class="bg-white">
+  <v-container>
     <v-row no-gutters>
-      <v-col v-for="n in 3" :key="n" cols="12" sm="4">
-        <v-sheet class="ma-2 pa-2"> One of three columns </v-sheet>
+      <v-col v-for="(column, index) in columns" :key="index" cols="12" sm="4">
+        <!-- <v-sheet > {{ column }} </v-sheet> -->
+        <CardColumn :title="column" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <style>
+* {
+  color: rgb(var(--v-theme-brown));
+}
 body {
-  background-color: rgb(var(--v-theme-white));
+  background-color: rgb(var(--v-theme-yellow));
 }
 </style>

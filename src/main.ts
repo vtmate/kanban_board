@@ -10,13 +10,15 @@ import * as directives from "vuetify/directives";
 const myCustomLightTheme = {
   dark: false,
   colors: {
-    mybrown: "#8B4513",
     white: "#FEF9F3",
+    yellow: "#FEECBE",
+    pink: "#F2B8B4",
+    brown: "#3C1414",
   },
-  variables: {
-    "border-color": "#000000",
-    "border-opacity": 0.12,
-  },
+  //   variables: {
+  //     "border-color": "#000000",
+  //     "border-opacity": 0.12,
+  //   },
 };
 
 const vuetify = createVuetify({
