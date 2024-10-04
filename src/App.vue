@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import CardColumn from "./components/CardColumn.vue";
-import AddCardDialog from "./components/AddCardDialog.vue";
 
 const columns = ref(["Todo", "In Progress", "Done"]);
 </script>
@@ -11,7 +10,7 @@ const columns = ref(["Todo", "In Progress", "Done"]);
     <!-- <v-app-bar :elevation="0" :app="false">
       <v-app-bar-title>Application Bar</v-app-bar-title>
     </v-app-bar> -->
-    <v-container class="mt-10">
+    <v-container class="mt-10 container">
       <v-row no-gutters>
         <v-col v-for="(column, index) in columns" :key="index" cols="12" sm="4">
           <CardColumn :title="column" />
@@ -39,5 +38,13 @@ const columns = ref(["Todo", "In Progress", "Done"]);
 
 body {
   background-color: rgb(var(--v-theme-yellow));
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.container {
+  min-height: 80vh;
 }
 </style>

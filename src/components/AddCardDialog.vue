@@ -5,11 +5,12 @@ const title = ref("");
 const description = ref("");
 
 const props = defineProps<{
-  addCard: (card: { title: string; description: string }) => void;
+  addCard: (card: { id: number; title: string; description: string }) => void;
 }>();
 
 const save = () => {
   props.addCard({
+    id: Math.floor(Math.random() * 100),
     title: title.value,
     description: description.value,
   });
@@ -35,7 +36,7 @@ const open = () => {
         ></v-btn>
       </template>
 
-      <v-card title="Add new Task">
+      <v-card class="rounded-xl" title="Add new Task">
         <v-form @submit.prevent>
           <v-card-text>
             <v-text-field
@@ -55,6 +56,7 @@ const open = () => {
             <v-btn text="Close" variant="plain" @click="dialog = false"></v-btn>
 
             <v-btn
+              class="rounded-xl"
               color="primary"
               text="Save"
               variant="tonal"

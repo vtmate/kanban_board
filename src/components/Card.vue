@@ -3,7 +3,7 @@
 
 const props = defineProps<{
   title: string;
-  description?: string;
+  description: string;
   id: number;
   deleteCard: (index: number) => void;
 }>();
@@ -13,7 +13,7 @@ const props = defineProps<{
   <v-card class="my-2 mx-4 pa-2 rounded-xl bg-white" hover>
     <v-card-title>{{ props.title }}</v-card-title>
     <v-divider :thickness="2" class="mx-4"></v-divider>
-    <v-card-text>{{ props.description }} </v-card-text>
+    <v-card-text class="opacity-80">{{ props.description }} </v-card-text>
     <v-container>
       <v-row>
         <v-col cols="12" class="d-flex justify-end py-0">
