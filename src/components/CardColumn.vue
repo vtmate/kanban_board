@@ -26,15 +26,26 @@ const props = defineProps<{
 </script>
 
 <template>
-  <h1>
-    {{ props.title }}
-  </h1>
+  <v-row
+    class="align-center pl-6 mx-1 mb-4 rounded-xl justify-space-between border border-brown border-md"
+    no-gutters
+  >
+    <v-col cols="auto" class="flex-grow-0 d-inline-flex">
+      <p class="text-h5 heading font-weight-bold">
+        {{ props.title }}
+      </p>
+    </v-col>
+    <v-col cols="auto" class="flex-grow-0 d-inline-flex">
+      <AddCardDialog :addCard="addCard" />
+    </v-col>
+  </v-row>
 
   <draggable
     class="draggable"
     v-model="cards"
     group="my-group"
     :itemKey="'title'"
+    chosen-class="chosen-item"
     ghost-class="dragging-item"
   >
     <template #item="{ element }">
@@ -45,17 +56,23 @@ const props = defineProps<{
           :description="element.description"
           :deleteCard="deleteCard"
         />
-        <!-- <div class="list-item">
-            {{ element.description }}
-          </div> -->
       </div>
     </template>
   </draggable>
-  <AddCardDialog :addCard="addCard" />
 </template>
 
 <style>
 .draggable {
-  min-height: 60vh;
+  min-height: 20vh;
+}
+
+.dragging-item {
+  opacity: 60%;
+}
+
+@media only screen and (min-width: 800px) {
+  .draggable {
+    min-height: 60vh !important;
+  }
 }
 </style>

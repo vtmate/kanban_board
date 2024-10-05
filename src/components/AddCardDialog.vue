@@ -24,16 +24,17 @@ const open = () => {
 </script>
 
 <template>
-  <div class="pa-4 text-center">
+  <div class="plus">
     <v-dialog v-model="dialog" max-width="400">
       <template v-slot:activator="{ props: activatorProps }">
         <v-btn
-          class="text-none font-weight-regular"
-          text="Add new Task"
-          variant="tonal"
+          icon="mdi-calendar"
+          size="x-large"
+          variant="plain"
           v-bind="activatorProps"
           @click="open"
-        ></v-btn>
+          ><img src="../assets/plus.svg" alt="plus icon"
+        /></v-btn>
       </template>
 
       <v-card class="rounded-xl" title="Add new Task">
@@ -68,3 +69,9 @@ const open = () => {
     </v-dialog>
   </div>
 </template>
+
+<style>
+.plus {
+  width: 4rem;
+}
+</style>
