@@ -26,6 +26,7 @@ const open = () => {
 <template>
   <div class="plus">
     <v-dialog v-model="dialog" max-width="400">
+      <!-- Button for opening the dialog -->
       <template v-slot:activator="{ props: activatorProps }">
         <v-btn
           icon="mdi-calendar"
@@ -37,6 +38,7 @@ const open = () => {
         /></v-btn>
       </template>
 
+      <!-- Dialog content -->
       <v-card class="rounded-xl" title="Add new Task">
         <v-form @submit.prevent>
           <v-card-text>

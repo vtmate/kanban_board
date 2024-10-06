@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// import { ref } from "vue";
-
 const props = defineProps<{
   title: string;
   description: string;
@@ -10,6 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
+  <!-- Card component -->
   <v-card class="my-2 mx-4 pa-2 rounded-xl bg-white" hover>
     <v-card-title>{{ props.title }}</v-card-title>
     <v-divider :thickness="2" class="mx-4"></v-divider>

@@ -3,6 +3,7 @@ import { ref } from "vue";
 import Card from "./Card.vue";
 import AddCardDialog from "./AddCardDialog.vue";
 import draggable from "vuedraggable";
+import { addCard, deleteCard } from "../cardService";
 
 interface Card {
   id: number;
@@ -12,12 +13,12 @@ interface Card {
 
 const cards = ref<Card[]>([]);
 
-const deleteCard = (id: number) => {
-  cards.value = cards.value.filter((card) => card.id !== id);
+const handleDeleteCard = (id: number) => {
+  cards.value = deleteCard(cards.value, id);
 };
 
-const addCard = (card: { id: number; title: string; description: string }) => {
-  cards.value.push(card);
+const handleAddCard = (card: Card) => {
+  cards.value = addCard(cards.value, card);
 };
 
 const props = defineProps<{
@@ -26,6 +27,7 @@ const props = defineProps<{
 </script>
 
 <template>
+  <!-- CardColumn header -->
   <v-row
     class="align-center pl-6 mx-1 mb-4 rounded-xl justify-space-between border border-brown border-md"
     no-gutters
@@ -36,10 +38,11 @@ const props = defineProps<{
       </p>
     </v-col>
     <v-col cols="auto" class="flex-grow-0 d-inline-flex">
-      <AddCardDialog :addCard="addCard" />
+      <AddCardDialog :addCard="handleAddCard" />
     </v-col>
   </v-row>
 
+  <!-- Cardcolumn body containing draggable Cards -->
   <draggable
     class="draggable"
     v-model="cards"
@@ -54,7 +57,7 @@ const props = defineProps<{
           :id="element.id"
           :title="element.title"
           :description="element.description"
-          :deleteCard="deleteCard"
+          :deleteCard="handleDeleteCard"
         />
       </div>
     </template>

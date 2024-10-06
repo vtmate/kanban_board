@@ -7,9 +7,7 @@ const columns = ref(["Todo", "In Progress", "Done"]);
 
 <template>
   <v-app class="bg-yellow">
-    <!-- <v-app-bar :elevation="0" :app="false">
-      <v-app-bar-title>Application Bar</v-app-bar-title>
-    </v-app-bar> -->
+    <!-- Container for the CardColumn components -->
     <v-container class="mt-10 container">
       <v-row no-gutters>
         <v-col v-for="(column, index) in columns" :key="index" cols="12" sm="4">
@@ -18,6 +16,7 @@ const columns = ref(["Todo", "In Progress", "Done"]);
       </v-row>
     </v-container>
 
+    <!-- Footer -->
     <v-footer class="bg-brown">
       <v-row justify="center" no-gutters>
         <p class="text-white">
